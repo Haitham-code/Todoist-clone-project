@@ -1,0 +1,41 @@
+@import "../../template.scss";
+
+.header {
+  height: 44px;
+  background-color: #db4c3f;
+  width: 100%;
+  position: fixed;
+  top: 0;
+
+  .inner-container {
+    @include flex(row, space-around);
+
+    .logo {
+      color: rgb(104, 194, 216);
+
+      img {
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    .title {
+      padding-top: 6px;
+      .title-inner {
+        font-family: "Pacifico";
+        font-size: 30px;
+        color: rgb(247, 240, 240);
+      }
+    }
+
+    .add-quick-task {
+      @include flex(row);
+      padding-top: 14px;
+      color: black;
+      cursor: pointer;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}

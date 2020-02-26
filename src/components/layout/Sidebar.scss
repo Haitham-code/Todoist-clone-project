@@ -1,0 +1,318 @@
+@import "../../template.scss";
+
+.sidebar {
+  z-index: 1;
+  background-color: white;
+  @include flex(row);
+  position: fixed;
+  margin-top: 44px;
+  width: 200px;
+  height: 630px;
+
+  .list-holder {
+    padding-top: 20px;
+    @include flex(column);
+
+    width: 100%;
+
+    .top-section {
+      cursor: pointer;
+      .inbox {
+        &:hover {
+          background-color: rgb(246, 247, 248);
+          border-radius: 3px;
+        }
+        height: 30px;
+        .first-item {
+          .inbox-font {
+            color: rgb(195, 228, 240);
+            padding-right: 5px;
+          }
+          padding-top: 5px;
+        }
+      }
+      .today {
+        &:hover {
+          background-color: rgb(246, 247, 248);
+          border-radius: 3px;
+        }
+        height: 30px;
+        .second-item {
+          .today-font {
+            color: rgb(169, 243, 169);
+            padding-right: 7px;
+          }
+          padding-top: 5px;
+        }
+      }
+      .next-7 {
+        &:hover {
+          background-color: rgb(246, 247, 248);
+          border-radius: 3px;
+        }
+        height: 30px;
+        .third-item {
+          .next_7-font {
+            color: rgb(216, 144, 238);
+            padding-right: 7px;
+          }
+          padding-top: 5px;
+        }
+      }
+    }
+
+    .middle-section {
+      padding-top: 20px;
+
+      .projects {
+        .project-head {
+          @include flex(row);
+          padding-bottom: 10px;
+          .projects-title {
+            cursor: pointer;
+            .title {
+              font-size: 20px;
+            }
+            .arrow {
+              float: left;
+              width: 18px;
+              height: 18px;
+              padding-top: 2px;
+
+              transform: rotate(-90deg);
+              transition: transform 0.5s;
+              &.hide {
+                transform: rotate(0deg);
+                transition: transform 0.5s;
+              }
+            }
+          }
+          .quick-show {
+            color: black;
+            margin-left: 83px;
+            padding-top: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            &:hover {
+              color: red;
+            }
+          }
+        }
+
+        .hide-list-wrapper {
+          visibility: hidden;
+          height: 0;
+          transition: height 0.3s, visibility 0.1s ease-in-out;
+          &.hide {
+            height: 200px;
+            transition: height 0.2s, opacity 0.5s ease-in-out;
+            opacity: 1;
+            visibility: visible;
+          }
+
+          .outer-projects {
+            overflow-y: scroll;
+            height: 100px;
+
+            .projects-inner {
+              li {
+                &:hover {
+                  .project-fontawsome {
+                    color: red;
+                  }
+                }
+                list-style: none;
+                padding-top: 5px;
+
+                .delete {
+                  float: right;
+                  color: darkgray;
+                  padding-right: 10px;
+                  cursor: pointer;
+                  &:hover {
+                    color: black;
+                  }
+                }
+                .delete-project-model {
+                  &.delete-overlay {
+                    opacity: 1;
+                    visibility: visible;
+                    transition: opacity 0.3s ease-in-out;
+                  }
+                  position: fixed;
+                  top: 0px;
+                  bottom: 0;
+                  left: 0px;
+                  right: 0;
+                  opacity: 0;
+                  visibility: hidden;
+                  background: rgba(51, 50, 50, 0.7);
+
+                  .delete-box {
+                    margin: 70px auto;
+                    padding: 20px;
+                    background: #fff;
+                    border-radius: 5px;
+                    width: 30%;
+                    opacity: 1;
+                    position: relative;
+
+                    .yes {
+                      background-color: red;
+                      color: white;
+                      border-radius: 4px;
+                      margin: 10px;
+                      cursor: pointer;
+                      border: none;
+                      height: 30px;
+                    }
+                    .no {
+                      border-radius: 4px;
+                      cursor: pointer;
+                      height: 30px;
+                      border: 1px solid darkgray;
+                    }
+                  }
+                }
+                .project-item {
+                  padding-left: 5px;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+          .outer-projects::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #f5f5f5;
+          }
+
+          .outer-projects::-webkit-scrollbar {
+            width: 8px;
+            background-color: #f5f5f5;
+          }
+
+          .outer-projects::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #555;
+          }
+          .add-project {
+            padding-top: 20px;
+
+            .add-project-inner {
+              padding-top: 5px;
+              margin-top: 5px;
+              cursor: pointer;
+              &:hover {
+                .font-awsome {
+                  color: red;
+                }
+
+                .add-project {
+                  color: red;
+                }
+              }
+
+              .font-awsome {
+                font-size: 15px;
+                color: black;
+              }
+              .add-project {
+                padding-left: 5px;
+              }
+            }
+
+            .add-project-show {
+              &.show {
+                opacity: 1;
+                visibility: visible;
+                transition: opacity 0.3s ease-in-out;
+              }
+              position: fixed;
+              top: 0px;
+              bottom: 0;
+              left: 0px;
+              right: 0;
+              opacity: 0;
+              visibility: hidden;
+              background: rgba(51, 50, 50, 0.7);
+
+              .text-box {
+                @include flex(column);
+
+                margin: 70px auto;
+                padding: 20px;
+                background: #fff;
+                border-radius: 5px;
+                width: 30%;
+                opacity: 1;
+                position: relative;
+
+                .title {
+                  padding: 10px;
+                  background-color: rgb(233, 230, 230);
+                  border-radius: 4px;
+                  font-size: 20px;
+                }
+                .project-name {
+                  padding-top: 15px;
+                  padding-left: 10px;
+                  padding-bottom: 5px;
+                }
+
+                input {
+                  margin-left: 8px;
+                  padding-left: 5px;
+                  width: 80%;
+                  height: 25px;
+                  border-radius: 4px;
+                  border: 1px solid darkgray;
+                }
+
+                .buttons {
+                  padding-top: 20px;
+
+                  width: 115px;
+
+                  .add {
+                    background-color: red;
+                    color: white;
+                    border-radius: 4px;
+                    margin: 5px;
+                    border: none;
+                    cursor: pointer;
+                    height: 30px;
+                  }
+                  .cancel {
+                    border: 1px solid lightgray;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    height: 30px;
+                  }
+                }
+              }
+            }
+          }
+
+          .archived-projects {
+            padding-top: 30px;
+          }
+        }
+      }
+    }
+
+    .bottom-section {
+      padding-top: 20px;
+      .bottom-options {
+        div {
+          height: 30px;
+          padding-top: 8px;
+          border-top: 2px solid lightgray;
+
+          margin-bottom: 3px;
+        }
+      }
+    }
+  }
+}

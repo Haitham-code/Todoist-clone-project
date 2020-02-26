@@ -1,0 +1,12 @@
+@import "./template.scss";
+
+.App {
+  @include flex(column, center, center);
+  font-family: "Sriracha";
+  color: rgb(77, 76, 75);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}

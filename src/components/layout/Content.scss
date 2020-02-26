@@ -1,0 +1,15 @@
+@import "../../template.scss";
+
+.content-wrapper {
+  width: 70%;
+  height: 630px;
+
+  @include flex(row);
+
+  .sidebar {
+  }
+
+  .main-content {
+    width: 75%;
+  }
+}
