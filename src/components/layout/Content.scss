@@ -2,7 +2,18 @@
 
 .content-wrapper {
   width: 70%;
-  height: 630px;
+  height: 756px;
+
+  @media screen and(max-width :600px) {
+    width: 100%;
+
+    .main-content {
+      width: 70%;
+    }
+    .sidebar {
+      width: 30%;
+    }
+  }
 
   @include flex(row);
 
