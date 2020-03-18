@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { firebase } from "../firebase";
-import { collatedTasksExist } from "../helpers";
 import moment from "moment";
+import { AuthProviderValue } from "../context/index";
 
 export const useTasks = selectedProject => {
   const [tasks, setTasks] = useState([]);
   const [archived, setArchived] = useState([]);
+  const { user, setUser } = AuthProviderValue();
 
   useEffect(() => {
     let unsubscribe = firebase
       .firestore()
       .collection("tasks")
-      .where("userId", "==", "haitham");
+      .where("userId", "==", user.uid);
 
     unsubscribe = unsubscribe.onSnapshot(snapshot => {
       let newTasks = snapshot.docs.map(task => ({
@@ -57,12 +58,13 @@ export const useTasks = selectedProject => {
 
 export const useProjects = () => {
   const [projects, setProjects] = useState([]);
+  const { user, setUser } = AuthProviderValue();
 
   useEffect(() => {
     firebase
       .firestore()
       .collection("projects")
-      .where("userId", "==", "haitham")
+      .where("userId", "==", user.uid)
       .orderBy("projectId")
       .get()
       .then(snapshot => {

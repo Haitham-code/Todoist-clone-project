@@ -2,6 +2,8 @@ import React from "react";
 import "./Header.scss";
 import logo from "../../pics/todo-icon-15.jpg";
 import { TaskHeaderStateValue } from "../../context/index";
+import { firebase } from "../../firebase";
+import { AuthProviderValue } from "../../context/index";
 
 //import { useTasks } from "../../hooks/index";
 
@@ -10,6 +12,12 @@ export const Header = () => {
   //console.log(tasks);
 
   const { quickState, setQuickState } = TaskHeaderStateValue();
+  const { user, setUser } = AuthProviderValue();
+
+  const out = () => {
+    firebase.auth().signOut();
+    setUser(null);
+  };
 
   return (
     <div className="header">
@@ -28,10 +36,19 @@ export const Header = () => {
             }}
           >
             <span>
-              <i class="fas fa-plus"></i>
+              <i className="fas fa-plus"></i>
             </span>
             <span>Add Quick Task</span>
           </div>
+        </div>
+        <div className="signout">
+          <button
+            onClick={() => {
+              out();
+            }}
+          >
+            Sign out
+          </button>
         </div>
       </div>
     </div>

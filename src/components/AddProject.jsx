@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { ProjectsProviderValue } from "../context/index";
 import { generatePushID } from "../helpers/index";
 import firebase from "firebase";
+import { AuthProviderValue } from "../context/index";
 
 export const AddProject = props => {
+  const { user, setUser } = AuthProviderValue();
   const { projects, setProjects } = ProjectsProviderValue();
   const [show, setShow] = useState(false);
 
@@ -21,12 +23,12 @@ export const AddProject = props => {
         .add({
           projectId,
           name: projectName,
-          userId: "haitham"
+          userId: user.uid
         })
         .then(() => {
           setProjects([]);
           setProjectName("");
-          setShow(false);
+          setShow(!show);
           input.value = "";
         });
   };
@@ -44,7 +46,7 @@ export const AddProject = props => {
         }}
       >
         <span className="font-awsome">
-          <i class="fas fa-plus"></i>
+          <i className="fas fa-plus"></i>
         </span>
         <span className="add-project">Add project</span>
       </div>
@@ -59,7 +61,13 @@ export const AddProject = props => {
             onChange={e => setProjectName(e.target.value)}
           />
           <div className="buttons">
-            <button className="add" onClick={() => addProject()}>
+            <button
+              className="add"
+              onClick={() => {
+                addProject();
+                props.value(false);
+              }}
+            >
               Add
             </button>
             <button

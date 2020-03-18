@@ -6,21 +6,19 @@
 
   @media screen and(max-width :600px) {
     width: 100%;
-
-    .main-content {
-      width: 72%;
-    }
-    .sidebar {
-      width: 28%;
-    }
   }
 
   @include flex(row);
 
   .sidebar {
+    @media screen and(max-width :600px) {
+      margin-left: 15px;
+    }
   }
 
   .main-content {
-    width: 75%;
+    @media screen and(max-width :600px) {
+      margin-left: 180px;
+    }
   }
 }

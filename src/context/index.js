@@ -15,6 +15,8 @@ import {
   TaskHeaderStateValue
 } from "./TaskHeaderState";
 
+import { AuthContext, AuthProvider, AuthProviderValue } from "./Auth";
+
 export {
   ProjectsContext,
   ProjectsProvider,
@@ -24,5 +26,8 @@ export {
   SelectedProjectProviderValue,
   TaskHeaderContext,
   TaskHeaderState,
-  TaskHeaderStateValue
+  TaskHeaderStateValue,
+  AuthContext,
+  AuthProvider,
+  AuthProviderValue
 };

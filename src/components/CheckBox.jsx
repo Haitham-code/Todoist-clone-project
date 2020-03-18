@@ -14,7 +14,7 @@ export const CheckBox = ({ id }) => {
 
   return (
     <span className="checkbox-holder" onClick={archiveTask}>
-      <i class="fas fa-archive"></i>
+      <i className="fas fa-archive"></i>
       <span className="tool-tip">Archive task</span>
     </span>
   );

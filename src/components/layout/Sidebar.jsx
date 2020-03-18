@@ -35,7 +35,7 @@ export const Sidebar = () => {
           >
             <div className="first-item">
               <span className="inbox-font">
-                <i class="fas fa-inbox"></i>
+                <i className="fas fa-inbox"></i>
               </span>
               <span>Inbox</span>
             </div>
@@ -49,7 +49,7 @@ export const Sidebar = () => {
           >
             <div className="second-item">
               <span className="today-font">
-                <i class="fas fa-calendar-week"></i>
+                <i className="fas fa-calendar-week"></i>
               </span>
               <span>Today</span>
             </div>
@@ -63,7 +63,7 @@ export const Sidebar = () => {
           >
             <div className="third-item">
               <span className="next_7-font">
-                <i class="far fa-calendar-alt"></i>
+                <i className="far fa-calendar-alt"></i>
               </span>
               <span>Next 7 days</span>
             </div>
@@ -79,16 +79,25 @@ export const Sidebar = () => {
                 }}
               >
                 <span className={`arrow  ${hideProjects ? "hide" : ""}`}>
-                  <i class="fas fa-chevron-down fa-1x"></i>
+                  <i className="fas fa-chevron-down fa-1x"></i>
                 </span>
                 <span className="title">Projects</span>
               </div>
-              <span className="quick-show" onClick={() => setShow(!show)}>
-                <i class="fas fa-plus"></i>
+              <span
+                className="quick-show"
+                onClick={() => {
+                  setShow(!show);
+                }}
+              >
+                <i className="fas fa-plus"></i>
               </span>
             </div>
 
-            <div className={`hide-list-wrapper  ${hideProjects ? "hide" : ""}`}>
+            <div
+              className={`hide-list-wrapper  ${hideProjects ? "hide" : ""} ${
+                show ? "show" : ""
+              }`}
+            >
               <div className="outer-projects">
                 <Projects />
               </div>

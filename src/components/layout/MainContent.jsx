@@ -39,7 +39,7 @@ export const MainContent = () => {
             }}
           >
             <span className={`arrow  ${showArchived ? "rotate" : ""}`}>
-              <i class="fas fa-chevron-down fa-sm "></i>
+              <i className="fas fa-chevron-down fa-sm "></i>
             </span>
             <span>Archived Tasks</span>
           </div>
@@ -47,7 +47,7 @@ export const MainContent = () => {
           <div className={`archived ${showArchived ? "show-archived" : ""}`}>
             <div className="archived-list">
               {archived.map(item => (
-                <li> {item.task}</li>
+                <li key={item.task}> {item.task}</li>
               ))}
             </div>
           </div>

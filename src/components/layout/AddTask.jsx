@@ -3,6 +3,7 @@ import firebase from "firebase";
 import momnet from "moment";
 import { ProjectsProviderValue } from "../../context/index";
 import { TaskHeaderStateValue } from "../../context/index";
+import { AuthProviderValue } from "../../context/index";
 
 export const AddTask = selectedProject => {
   const { quickState, setQuickState } = TaskHeaderStateValue();
@@ -11,6 +12,7 @@ export const AddTask = selectedProject => {
   const [menueItem, setMenueItem] = useState("");
   const { projects } = ProjectsProviderValue();
   const [project, setProject] = useState("");
+  const { user, setUser } = AuthProviderValue();
 
   const projectId = selectedProject.value;
 
@@ -38,7 +40,7 @@ export const AddTask = selectedProject => {
           archived: false,
           task: taskName,
           projectId: project || projectId,
-          userId: "haitham",
+          userId: user.uid,
           date: collatedDate || ""
         })
         .then(() => {
@@ -61,7 +63,7 @@ export const AddTask = selectedProject => {
           className="add-task-item"
         >
           <span className="add-task-icon">
-            <i class="fas fa-plus"></i>
+            <i className="fas fa-plus"></i>
           </span>
           <span className="add-task-title">Add task</span>
         </div>

@@ -63,6 +63,7 @@
 
     .middle-section {
       padding-top: 20px;
+      margin-bottom: 15px;
 
       .projects {
         .project-head {
@@ -102,17 +103,26 @@
         .hide-list-wrapper {
           visibility: hidden;
           height: 0;
-          transition: height 0.3s, visibility 0.1s ease-in-out;
+          opacity: 0;
+          transition: 0.2s all ease-in-out;
+
           &.hide {
-            height: 200px;
-            transition: height 0.2s, opacity 0.5s ease-in-out;
+            height: 4rem;
             opacity: 1;
             visibility: visible;
+            transition: 0.2s all ease-in-out;
+          }
+
+          &.show {
+            opacity: 1;
+            overflow: hidden;
+
+            transition: opacity 0.5s ease-in-out;
           }
 
           .outer-projects {
             overflow-y: scroll;
-            height: 100px;
+            max-height: 46px;
 
             .projects-inner {
               li {
@@ -198,11 +208,9 @@
             background-color: #555;
           }
           .add-project {
-            padding-top: 20px;
-
+            margin-top: 5px;
+            margin-top: 5px;
             .add-project-inner {
-              padding-top: 5px;
-              margin-top: 5px;
               cursor: pointer;
               &:hover {
                 .font-awsome {
@@ -225,7 +233,7 @@
 
             .add-project-show {
               &.show {
-                opacity: 1;
+                opacity: 1 !important;
                 visibility: visible;
                 transition: opacity 0.3s ease-in-out;
               }
@@ -294,16 +302,11 @@
               }
             }
           }
-
-          .archived-projects {
-            padding-top: 30px;
-          }
         }
       }
     }
 
     .bottom-section {
-      padding-top: 20px;
       .bottom-options {
         div {
           height: 30px;
